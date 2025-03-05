@@ -9,6 +9,8 @@ This repository showcases a series of demos illustrating the integration of **La
 
 Currently, the demos use the [OpenAI API](https://openai.com/api/) as the LLM provider, but they can be adapted to work with any other LLM, including **self-hosted or local models**.
 
+---
+
 ## Demos Included
 
 ### 1️. [Hello World with LangChain4j]((./01-Hello-LangChain4j/))
@@ -23,6 +25,8 @@ A set of Java examples demonstrating how to connect to an LLM using [LangChain4j
 4. `HelloLangChain4j04.java`: Uses **LangChain4j’s built-in memory** to avoid manually sending the entire message history.
 
 📌 All these demos **use JBang** to keep execution **simple and portable**.
+
+---
 
 ### 2️. [Lying Weather Tool](./02-Lying-weather-Tool/)
 
@@ -57,6 +61,41 @@ public static String getWeather(String city) {
 3. **`CallingTool03.java`**:
   - Uses another LangChain4j concept, **[AI Services](https://docs.langchain4j.dev/tutorials/ai-services)**, that make **everything simpler**, with features like calling tools transparently
 
+---
+
+### 3️. [Real Weather Tool with LangChain4j](./03-Real-Weather-Tool/)
+
+
+This demo showcases how to integrate real-time weather data into a Java application using [LangChain4j](https://github.com/langchain4j/langchain4j), [OkHttp](https://square.github.io/okhttp/), and [Jackson Databind](https://github.com/FasterXML/jackson-databind). The tool fetches current weather information for a specified city and country code by:
+
+1. **Geocoding**: Retrieving the latitude and longitude of the specified city using the [Open-Meteo Geocoding API](https://open-meteo.com/en/docs/geocoding-api).
+
+2. **Fetching Weather Data**: Using the obtained coordinates to request current weather conditions from the [Open-Meteo Forecast API](https://open-meteo.com/en/docs).
+
+#### Demo
+
+**`RealWeatherTool.java`** contains the implementation of the weather tool, including methods for geocoding and fetching weather data:
+
+1. **Define the Tool**: Annotate the `getWeather` method with `@Tool` to expose it for LLM integration.
+
+   ```java
+   @Tool("A tool to get the current weather for a given city and country code")
+   public static String getWeather(String city, String countryCode) {
+       // Implementation
+   }
+   ```
+
+2. **Geocoding**: Implement the `getCoordinates` method to fetch latitude and longitude for the specified city and country code using the Open-Meteo Geocoding API.
+
+3. **Fetch Weather Data**: Use the coordinates to request current weather information from the Open-Meteo Forecast API.
+
+4. **Handle Responses**: Parse the JSON responses using Jackson's `ObjectMapper` and extract relevant data such as temperature, windspeed, and weather conditions.
+
+5. **Integrate with LLM**: Utilize LangChain4j to enable the LLM to call the `getWeather` tool dynamically, providing real-time weather information based on user queries.
+
+ **`CallingTool01.java`** simply uses **[AI Services](https://docs.langchain4j.dev/tutorials/ai-services)**, to allows the LLM to call the _Real Weather Tool_ transparently.
+ 
+---
 
 ## Getting Started
 
