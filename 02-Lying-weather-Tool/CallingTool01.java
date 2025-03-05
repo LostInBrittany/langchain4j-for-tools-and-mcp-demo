@@ -3,8 +3,6 @@
 //DEPS dev.langchain4j:langchain4j-open-ai:1.0.0-beta1
 //SOURCES LyingWeatherTool.java
 
-import static java.lang.System.*;
-
 import java.util.List;
 
 import dev.langchain4j.agent.tool.ToolSpecification;
