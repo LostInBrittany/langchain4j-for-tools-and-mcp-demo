@@ -19,7 +19,7 @@ import dev.langchain4j.memory.chat.TokenWindowChatMemory;
  ** Memory keeps some information, which is presented to the 
  ** LLM to make it behave as if it "remembers" the conversation
  ** ------------------------------------------------------- */
-public class HelloJug04 {
+public class HelloLangChain4j04 {
   public static void main(String... args) {
     String apiKey = System.getenv("OPENAI_API_KEY");
     OpenAiChatModel model = OpenAiChatModel.builder()

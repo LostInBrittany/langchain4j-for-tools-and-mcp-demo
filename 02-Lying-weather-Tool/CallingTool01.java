@@ -19,6 +19,12 @@ import dev.langchain4j.memory.chat.TokenWindowChatMemory;
 
 import static dev.langchain4j.model.openai.OpenAiChatModelName.GPT_4_O_MINI;
 
+
+/** ------------------------------------------------------- 
+ ** We can add a tool specification
+ ** The LLM understand it and sends back a 
+ ** tool execution request
+ ** ------------------------------------------------------- */
 public class CallingTool01 {
 
   public static void main(String... args) {

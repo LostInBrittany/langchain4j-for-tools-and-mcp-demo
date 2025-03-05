@@ -15,7 +15,7 @@ import dev.langchain4j.data.message.ChatMessage;
 /** ------------------------------------------------------- 
  ** One way to make it remember: sending the whole history    
  ** ------------------------------------------------------- */
-public class HelloJug03 {
+public class HelloLangChain4j03 {
   public static void main(String... args) {
     String apiKey = System.getenv("OPENAI_API_KEY");
     OpenAiChatModel model = OpenAiChatModel.builder()
