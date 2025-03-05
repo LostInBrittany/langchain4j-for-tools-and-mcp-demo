@@ -94,8 +94,10 @@ public class RealWeatherTool {
 
           Optional<JsonNode> matchingNode = resultStream
             .filter(node -> 
-              countryCode.equals(node.get("country").asText()) 
-              || countryCode.equals(node.get("country_code").asText()))
+              countryCode.toLowerCase().equals(
+                node.get("country").asText().toLowerCase()) ||
+              countryCode.toLowerCase().equals(
+                node.get("country_code").asText().toLowerCase()))
             .findFirst();
           double[] coordinates = matchingNode
             .map((node) -> new double[]{

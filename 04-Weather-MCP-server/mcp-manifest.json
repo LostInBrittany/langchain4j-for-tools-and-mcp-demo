@@ -1,0 +1,50 @@
+{
+    "version": "1.0",
+    "functions": [
+      {
+        "name": "getWeather",
+        "description": "Fetches the current weather for a given city and country code.",
+        "parameters": {
+          "city": {
+            "type": "string",
+            "description": "The name of the city for which to fetch weather data.",
+            "required": true
+          },
+          "countryCode": {
+            "type": "string",
+            "description": "The country code (ISO 3166-1 alpha-2) of the city.",
+            "required": true
+          }
+        },
+        "returns": {
+          "type": "object",
+          "description": "The current weather conditions in the requested city.",
+          "properties": {
+            "temperature": {
+              "type": "number",
+              "description": "The current temperature in Celsius."
+            },
+            "windspeed": {
+              "type": "number",
+              "description": "The current wind speed in km/h."
+            },
+            "condition": {
+              "type": "string",
+              "description": "A textual description of the weather conditions."
+            }
+          }
+        },
+        "security": {
+          "authentication": "none",
+          "authorization": "public"
+        }
+      }
+    ],
+    "metadata": {
+      "service_name": "Weather Service MCP",
+      "description": "An MCP-compliant API that provides real-time weather data for any given city and country.",
+      "provider": "LostInBrittany",
+      "version": "1.0.0"
+    }
+  }
+  
