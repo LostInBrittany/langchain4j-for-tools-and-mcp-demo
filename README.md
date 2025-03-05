@@ -11,15 +11,12 @@ Currently, the demos use the [OpenAI API](https://openai.com/api/) as the LLM pr
 
 ## Demos Included
 
-### 1️. Hello World with LangChain4j
+### 1️. [Hello World with LangChain4j]((./01-Hello-LangChain4j/))
 
-#### Description
 A set of Java examples demonstrating how to connect to an LLM using [LangChain4j](https://docs.langchain4j.dev/) and [JBang](https://www.jbang.dev/).
 
-#### Code Location
-[`01-Hello-LangChain4j`](./01-Hello-LangChain4j/)
-
 #### Demos
+
 1. `HelloLangChain4j01.java`: Sends a message to the LLM and receives a response.
 2. `HelloLangChain4j02.java`: Demonstrates that **LLM interactions are stateless**—the model does not remember previous inputs.
 3. `HelloLangChain4j03.java`: Sends the full conversation history to the LLM, allowing it to maintain context.
@@ -27,23 +24,18 @@ A set of Java examples demonstrating how to connect to an LLM using [LangChain4j
 
 📌 All these demos **use JBang** to keep execution **simple and portable**.
 
-### 2️. Lying Weather Tool
+### 2️. [Lying Weather Tool](./02-Lying-weather-Tool/)
 
-#### Description
 A set of Java examples demonstrating **how to expose Java functions as tools** that LLMs can invoke dynamically.  
 Like the previous examples, these demos are based on [LangChain4j](https://docs.langchain4j.dev/) and use [JBang](https://www.jbang.dev/) for easy execution.
 
-#### Code Location
-[`02-Lying-weather-Tool`](./02-Lying-weather-Tool/)
-
-#### Demos
 This section's demos use `LyingWeatherTool.java`, a class where we define a (fake) tool that we expose to the LLM.  
 The **Lying Weather Tool** contains a single function:
 
 ```java
 @Tool
 public static String getWeather(String city) {
-    return "The weather in " + city + " is sunny and hot.";
+  return "The weather in " + city + " is sunny and hot.";
 }
 ```
 
@@ -51,15 +43,20 @@ public static String getWeather(String city) {
   **_"A tool to get the current weather in a city."_**  
 - However, the function **always returns the same (fake) weather response**, no matter the city.
 
-#### Tool Execution Demos
+#### Demos
+
 1. **`CallingTool01.java`**:  
-   - Defines a tool specification for the **Lying Weather Tool** and provides it to the LLM.  
-   - The LLM understands the tool and requests an execution.
+  - [Defines a tool specification](https://docs.langchain4j.dev/tutorials/tools) for the **Lying Weather Tool** and provides it to the LLM.  
+  - The LLM understands the tool and requests an execution.
 
 2. **`CallingTool02.java`**:  
-   - Manually executes the tool request and sends the response back to the LLM.  
-   - The LLM integrates the result into a natural language response.  
-   - **Demonstrates why manual execution is cumbersome**—this is where **automated execution & MCP** come in!
+  - Manually executes the tool request and sends the response back to the LLM.  
+  - The LLM integrates the result into a natural language response.  
+  - **Demonstrates why manual execution is cumbersome**—this is where **automated execution** come in!
+
+3. **`CallingTool03.java`**:
+  - Uses another LangChain4j concept, **[AI Services](https://docs.langchain4j.dev/tutorials/ai-services)**, that make **everything simpler**, with features like calling tools transparently
+
 
 ## Getting Started
 
