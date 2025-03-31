@@ -18,7 +18,7 @@ public class HelloLangChain4j01 {
     System.out.println("------------------------------------");
 
     String response = model.chat(
-        "I am doing a demo at Madrid JUG. Can you introduce yourself and say hello?");
+        "I am doing a demo at Sevilla JUG. Can you introduce yourself and say hello?");
     System.out.println(response);
 
     System.out.println("------------------------------------");

@@ -29,7 +29,7 @@ public class HelloLangChain4j03 {
     System.out.println("------------------------------------");
 
     UserMessage message01 = UserMessage.from(
-        "I am doing a demo at Madrid JUG. Can you introduce yourself and say hello?");
+        "I am doing a demo at Sevilla JUG. Can you introduce yourself and say hello?");
     userMessages = List.of(message01);
     response = model.generate(userMessages);
     AiMessage aiMessage01 = response.content();

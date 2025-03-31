@@ -41,7 +41,7 @@ public class CallingTool03 {
         .build();    
 
     System.out.println("------------------------------------");
-    String question = "What will the weather be like in Madrid tomorrow?";
+    String question = "What is the weather like in Sevilla today?";
     String response = assistant.chat(question);
     System.out.println(response);
     System.out.println("------------------------------------");

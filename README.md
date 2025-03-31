@@ -3,6 +3,7 @@
 This repository contains all the code and examples from my talk:  
 **MCP: using Java and Quarkus to bridge LLMs with your applications and data**, presented at:
 
+- **2025-04-02** - [Sevilla JUG](https://www.meetup.com/svqjug/events/306699978/) (Sevilla, Spain) - [Slides](./slides/)
 - **2024-03-05** - [Madrid JUG](https://www.meetup.com/madridjug/events/306387233/) (Madrid, Spain) - [Slides](./slides/)
 
 This repository showcases a series of demos illustrating the integration of **Large Language Models (LLMs) with Java** using [LangChain4j](https://github.com/langchain4j/langchain4j) and the **Model Context Protocol (MCP)**.
@@ -95,6 +96,39 @@ This demo showcases how to integrate real-time weather data into a Java applicat
 
  **`CallingTool01.java`** simply uses **[AI Services](https://docs.langchain4j.dev/tutorials/ai-services)**, to allows the LLM to call the _Real Weather Tool_ transparently.
  
+---
+
+### 4️. [Weather MCP Server](./04-Weather-MCP-server/)
+
+This demo showcases how to implement a **Model Context Protocol (MCP)** server using [Quarkus MCP](https://github.com/quarkiverse/quarkus-mcp) and the real weather tool functionality from the previous examples.
+
+The Model Context Protocol (MCP) is a standardized way for tools and LLMs to communicate, allowing:
+
+1. Tools to expose their functionality to any MCP-compatible LLM
+2. LLMs to discover and use tools without being tied to specific implementations
+3. A consistent interface for tool specifications and invocations
+
+#### Demo
+
+**`McpWeatherServer.java`** implements an MCP server that:
+
+1. **Uses Quarkus MCP Server STDIO**: Handles the MCP protocol communication through standard input/output.
+
+2. **Exposes a Weather Tool**: Makes the weather tool discoverable and usable by any MCP-compatible LLM.
+
+   ```java
+   @Tool(description = "A tool to get the current weather a given city and country code")
+   public String getWeather(
+       @ToolArg(description = "The city") String city,
+       @ToolArg(description = "The country code") String countryCode) {
+       // Implementation
+   }
+   ```
+
+3. **MCP-specific Annotations**: Uses `@Tool` and `@ToolArg` annotations from the MCP specification instead of LangChain4j's annotations.
+
+4. **Environment Compatibility**: Includes a wrapper script (`jbang-wrapper.sh`) to handle environment variable issues when running from AI assistants like [Claude Desktop](https://claude.ai/desktop) on Mac.
+
 ---
 
 ## Getting Started

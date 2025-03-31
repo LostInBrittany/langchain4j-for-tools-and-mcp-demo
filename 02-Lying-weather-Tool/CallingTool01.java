@@ -41,10 +41,12 @@ public class CallingTool01 {
     System.out.println("------------------------------------");
 
 
-    List<ToolSpecification> toolSpecifications = ToolSpecifications.toolSpecificationsFrom(LyingWeatherTool.class);
+    List<ToolSpecification> toolSpecifications = 
+      ToolSpecifications
+        .toolSpecificationsFrom(LyingWeatherTool.class);
 
     UserMessage message01 = UserMessage.from(
-        "What will the weather be like in Madrid tomorrow?");
+        "What is the weather like in Sevilla today?");
     chatMemory.add(message01);
     response = model.generate(chatMemory.messages(),toolSpecifications);
     AiMessage aiMessage01 = response.content();

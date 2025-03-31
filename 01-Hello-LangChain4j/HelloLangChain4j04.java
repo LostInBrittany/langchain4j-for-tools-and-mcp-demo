@@ -28,7 +28,8 @@ public class HelloLangChain4j04 {
         .build();
 
 
-    ChatMemory chatMemory = TokenWindowChatMemory.withMaxTokens(300, new OpenAiTokenizer(GPT_4_O_MINI));
+    ChatMemory chatMemory = TokenWindowChatMemory
+      .withMaxTokens(300, new OpenAiTokenizer(GPT_4_O_MINI));
     Response<AiMessage> response;
 
     System.out.println("------------------------------------");

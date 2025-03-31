@@ -45,10 +45,12 @@ public class CallingTool02 {
 
     System.out.println("------------------------------------");
 
-    List<ToolSpecification> toolSpecifications = ToolSpecifications.toolSpecificationsFrom(LyingWeatherTool.class);
+    List<ToolSpecification> toolSpecifications = 
+      ToolSpecifications
+      .toolSpecificationsFrom(LyingWeatherTool.class);
 
     UserMessage message01 = UserMessage.from(
-        "What will the weather be like in Madrid tomorrow?");
+        "What is the weather like in Sevilla today?");
     chatMemory.add(message01);
     response = model.generate(chatMemory.messages(), toolSpecifications);
     AiMessage aiMessage01 = response.content();
@@ -57,9 +59,11 @@ public class CallingTool02 {
 
     System.out.println("------------------------------------");
 
-    if (aiMessage01.hasToolExecutionRequests() && aiMessage01.toolExecutionRequests().size() == 1) {
+    if (aiMessage01.hasToolExecutionRequests() && 
+      aiMessage01.toolExecutionRequests().size() == 1) {
 
-      ToolExecutionRequest weatherRequest = aiMessage01.toolExecutionRequests().get(0);
+      ToolExecutionRequest weatherRequest = 
+        aiMessage01.toolExecutionRequests().get(0);
 
       if (weatherRequest.name().equals("getWeather")) {
 
@@ -74,7 +78,8 @@ public class CallingTool02 {
           System.exit(0);
         }
         ToolExecutionResultMessage weatherResponse = 
-          ToolExecutionResultMessage.from(weatherRequest,LyingWeatherTool.getWeather(city));
+          ToolExecutionResultMessage
+          .from(weatherRequest,LyingWeatherTool.getWeather(city));
         chatMemory.add(aiMessage01);
         chatMemory.add(weatherResponse);
         response = model.generate(chatMemory.messages(), toolSpecifications);
